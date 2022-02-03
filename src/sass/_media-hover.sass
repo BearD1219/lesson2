@@ -1,0 +1,43 @@
+@media (min-width: 992px)
+    .menu
+        &_item:hover &_link
+            color: $highlight
+            &::before
+                width: 100%
+
+        &_link
+            position: relative
+            transition: .2s
+            &::before
+                content: ('')
+                position: absolute
+                height: 1px
+                background-color: #fff
+                bottom: -2px
+                left: 50%
+                transform: translateX(-50%)
+                width: 0
+                transition: .5s all
+            
+
+
+    .mobile
+        &_item
+            cursor: pointer
+            &_subheader
+                transition: .2s all
+            &:hover &_subheader
+                color: $second-color
+
+    .footer
+        &_social-link:nth-of-type(odd):hover &_item-circle
+            background-color: $highlight
+        &_social-link:nth-of-type(even):hover &_item-circle
+            background-color: $second-color
+        .middle
+            li:hover
+                text-decoration: underline
+
+@media ( max-width: 767px)
+    
+    
