@@ -54,4 +54,26 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // MODAL
+    
+    const modal = document.querySelector('.modals'),
+        modalButtons = document.querySelectorAll('[data-modal]');
+
+    modalButtons.forEach(modalBtn => {
+        modalBtn.addEventListener('click', event => {
+            event.preventDefault();
+            modal.classList.add('modals_active');
+            document.body.classList.add('block');
+        });
+    });
+
+    modal.addEventListener('click', event => {
+        console.log(event.target);
+        if (event.target.classList.contains('modals_active') || event.target.classList.contains('modals__close')) {
+            modal.classList.remove('modals_active');
+            document.body.classList.remove('block');
+        }
+    });
+
+
 });
