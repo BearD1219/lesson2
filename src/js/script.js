@@ -57,23 +57,34 @@ window.addEventListener('DOMContentLoaded', () => {
     // MODAL
     
     const modal = document.querySelector('.modals'),
-        modalButtons = document.querySelectorAll('[data-modal]');
+        modalButtons = document.querySelectorAll('[data-modal]'),
+        modalsForm = document.querySelector('.modals__form');
+        thanksModal = document.querySelector('.thanks');
 
     modalButtons.forEach(modalBtn => {
         modalBtn.addEventListener('click', event => {
             event.preventDefault();
-            modal.classList.add('modals_active');
-            document.body.classList.add('block');
+            toggleModal();
         });
     });
 
     modal.addEventListener('click', event => {
-        console.log(event.target);
         if (event.target.classList.contains('modals_active') || event.target.classList.contains('modals__close')) {
-            modal.classList.remove('modals_active');
-            document.body.classList.remove('block');
+            toggleModal();
         }
     });
 
+    function toggleModal() {
+        modal.classList.toggle('modals_active');
+        document.body.classList.toggle('block');
+        modalsForm.reset();
+    }
+
+    modal.addEventListener('submit', event => {
+        event.preventDefault();
+        toggleModal();
+        thanksModal.classList.add('thanks_active');
+        setTimeout(() => thanksModal.classList.remove('thanks_active'), 2000);
+    });
 
 });
